@@ -4,6 +4,8 @@ An evidence-first calibration workspace that helps teachers find potential drift
 
 Built for the **OpenAI Build Week Education track**. The repository contains synthetic student work only.
 
+**Public judge demo:** <https://breadtitor.github.io/feedback-auditor/>
+
 ## Why this exists
 
 Teachers often grade a class over several sessions. Even with a shared rubric, similar evidence can receive meaningfully different scores or different levels of feedback coverage. Most AI education tools try to grade students or write feedback. Feedback Auditor audits the feedback that already exists.
@@ -17,7 +19,7 @@ The teacher remains the decision-maker. Every finding is a review question with 
 
 ## Judge quick start
 
-No account or API key is required for the complete synthetic demo.
+No account or API key is required for the complete synthetic demo. The fastest path is the [public judge deployment](https://breadtitor.github.io/feedback-auditor/).
 
 ```bash
 npm install
@@ -34,6 +36,8 @@ Open [http://localhost:3000](http://localhost:3000), then:
 6. Select **Export review** for a teacher-readable Markdown decision log.
 
 The demo contains six synthetic Grade 10 submissions and seven expected findings across four rule types.
+
+The public GitHub Pages deployment is intentionally static: it has no database, server API, or embedded OpenAI key. Live Analysis remains available in the repository's server deployment, while the public judge site exposes the complete deterministic workflow without a billable or abusable endpoint.
 
 ## Create a custom audit
 

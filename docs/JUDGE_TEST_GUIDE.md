@@ -2,6 +2,8 @@
 
 Time required: about three minutes. No login, student data, or API key is required.
 
+Public demo: <https://breadtitor.github.io/feedback-auditor/>
+
 ## 1. Open the product (20 seconds)
 
 Select **Try the synthetic demo** on the landing page. You should see:

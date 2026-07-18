@@ -27,17 +27,18 @@ These sentences will be used to assemble the final English Devpost description w
 
 ## External publishing confirmations
 
-- [ ] Authorize Google sign-in to Vercel, which may create a Vercel account and share the signed-in Google identity with Vercel.
 - [ ] Authorize upload of `feedback-auditor-demo-upload.mp4` as a **public** YouTube video on the currently signed-in channel **padoru MMD**.
 
 ## Verified submission facts
 
 - Track: Education
 - Repository: <https://github.com/breadtitor/feedback-auditor>
+- Public judge demo: <https://breadtitor.github.io/feedback-auditor/>
 - License: MIT
 - Demo length: 2:43
 - Demo format: 1920×1080, 16:9, English AI-assisted voiceover
 - Synthetic fixture: 6 submissions, 4 rubric dimensions, 7 findings, 4 deterministic rules
 - Live integration: GPT-5.6 Responses API + Structured Outputs + verbatim excerpt validation
 - Public judge path: no account and no API key required for the deterministic synthetic demo
+- Public hosting boundary: static GitHub Pages deployment with no database, server API, or embedded key
 - Automated grade changes: 0
