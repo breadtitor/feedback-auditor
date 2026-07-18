@@ -1,0 +1,74 @@
+[
+  {
+    "id": "submission-a",
+    "pseudonym": "Student A",
+    "text": "High schools should require every student to complete twenty hours of community service before graduation because service teaches responsibility beyond the classroom. Our town library depends on volunteers during its summer reading program. Last year, student volunteers helped younger children choose books, prepared craft tables, and cleaned the reading room after each session. This proves that a service requirement makes teenagers responsible citizens. Some students already have jobs, sports, or family duties, so the requirement should allow evening, weekend, and summer options. Schools could also approve service completed through clubs or neighborhood organizations. With flexible scheduling, every student could participate without losing important work or family time. A graduation requirement would introduce students to needs in their community and make service a normal part of education rather than an activity only a few students choose.",
+    "scores": {
+      "claim": 4,
+      "evidence": 3,
+      "organization": 4,
+      "clarity": 4
+    },
+    "teacherFeedback": "Your position is clear, and the scheduling response makes the proposal more practical. The library example is relevant, but explain how helping at one reading program demonstrates lasting responsibility. Add a sentence connecting that evidence directly to your larger claim."
+  },
+  {
+    "id": "submission-b",
+    "pseudonym": "Student B",
+    "text": "Community service should be required for graduation. A neighborhood food bank receives many donations in December, and student volunteers sort cans into boxes. The students work quickly when they are organized. The food bank example proves that required service makes students more responsible citizens. Schools already require classes, physical education, and other activities, so one service project is not unreasonable. Students could choose a cause that interests them and complete the hours at any time during the school year. A simple requirement would help local organizations and encourage teenagers to contribute to their communities. For these reasons, every high school should add twenty hours of community service to its graduation rules.",
+    "scores": {
+      "claim": 3,
+      "evidence": 1,
+      "organization": 3,
+      "clarity": 3
+    },
+    "teacherFeedback": "The response has a clear beginning and stays focused on the proposal. Improve the transition between the food-bank paragraph and the discussion of school requirements. The flexible scheduling idea gives the plan a useful practical detail."
+  },
+  {
+    "id": "submission-c",
+    "pseudonym": "Student C",
+    "text": "High schools should encourage community service, but they should not make it a graduation requirement. Service is most meaningful when students choose a cause because they care about it. At my school, members of the robotics club voluntarily ran a weekend workshop for younger students. They planned lessons, repaired equipment, and returned for several Saturdays because they wanted the program to succeed. Supporters of a requirement argue that mandatory service would expose every student to community needs. That exposure could be useful. However, schools should instead advertise volunteer opportunities and offer elective credit for sustained participation. A voluntary program would still help community groups while allowing students to choose work that matches their interests and schedules. Encouragement and recognition can build commitment without turning service into another box students must check before graduation.",
+    "scores": {
+      "claim": 3,
+      "evidence": 3,
+      "organization": 4,
+      "clarity": 4
+    },
+    "teacherFeedback": "The distinction between encouragement and a mandate is clear, and the robotics example supports your preference for voluntary service. You identify the opposing argument about exposing every student to community needs, but you need to answer why that benefit does not justify a requirement."
+  },
+  {
+    "id": "submission-d",
+    "pseudonym": "Student D",
+    "text": "Schools should not require twenty hours of community service because students have very different responsibilities outside school. Some students work evening shifts, care for younger siblings, or travel a long distance each day. A fixed service requirement could punish students who already contribute to their families. People who support the requirement say that service teaches responsibility and introduces teenagers to local problems. Students with jobs and family duties already practice responsibility every week. Schools could provide a list of optional projects and recognize students who participate, but graduation should depend on academic work rather than unpaid hours. Volunteering can be valuable, yet it should remain a choice so that students can balance school with the obligations they already have.",
+    "scores": {
+      "claim": 3,
+      "evidence": 3,
+      "organization": 3,
+      "clarity": 3
+    },
+    "teacherFeedback": "The examples involving jobs, sibling care, and travel make the practical concern easy to understand. Add a statistic or a specific school example to strengthen the evidence. The optional-project proposal is a reasonable alternative."
+  },
+  {
+    "id": "submission-e",
+    "pseudonym": "Student E",
+    "text": "A community-service requirement is a good idea because students should contribute before they graduate. Therefore, every school should immediately require twenty hours. Last spring, volunteers at a neighborhood garden planted vegetables that were later donated to a shelter. Some students may have limited transportation, and schools could arrange buses or approve projects completed from home. The garden shows that students can help other people. A requirement would also teach responsibility. The program should begin with a final reflection essay, followed by an orientation session, and then students could select a project. Schools could allow summer participation for students with busy schedules. Community service helps neighborhoods, so the requirement should be adopted.",
+    "scores": {
+      "claim": 3,
+      "evidence": 3,
+      "organization": 4,
+      "clarity": 3
+    },
+    "teacherFeedback": "The garden example and transportation accommodation are useful, but the organization is difficult to follow. The conclusion appears before the evidence, and the reflection essay is introduced before the orientation and project selection. Reorder the response so the problem, evidence, counterargument, and implementation plan build logically."
+  },
+  {
+    "id": "submission-f",
+    "pseudonym": "Student F",
+    "text": "Schools should reward sustained community service with elective credit instead of requiring the same number of hours from every student. An incentive preserves student choice while giving meaningful service academic recognition. In one district program, students who volunteered weekly with elementary reading partners were more likely to continue after the semester ended than students assigned to a single service day. The comparison suggests that continuity and choice matter more than simply completing a minimum number of hours. A requirement might reach more students at first, but it could also encourage them to select the quickest available task. Elective credit would let schools set clear expectations for reflection, reliability, and long-term participation. As a result, students could demonstrate genuine commitment while schools still promote service as part of civic education.",
+    "scores": {
+      "claim": 4,
+      "evidence": 4,
+      "organization": 4,
+      "clarity": 4
+    },
+    "teacherFeedback": "The distinction between a requirement and an incentive is convincing, and the comparison between the two service models supports the claim. Add a source citation for the participation comparison and explain how elective credit would be recorded on a transcript."
+  }
+]

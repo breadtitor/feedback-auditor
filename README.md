@@ -51,6 +51,12 @@ Select **Create an audit** on the home page. The guided setup supports:
 
 The **Load format template** action creates two editable records with the exact schema expected by the app. Custom draft data stays in the browser until the teacher explicitly starts Live Analysis.
 
+For a real Live Analysis smoke test, use the six fully fictional records in
+[`test-data/community-service-audit-samples.json`](test-data/community-service-audit-samples.json).
+The matching assignment prompt and deliberately planted R1–R4 review patterns are documented in
+[`test-data/community-service-audit-test-guide.md`](test-data/community-service-audit-test-guide.md).
+Exact model tags may vary, so use the built-in synthetic demo for the fixed seven-finding regression check.
+
 ## GPT-5.6 integration
 
 Live Analysis is implemented with the OpenAI JavaScript SDK, the Responses API, and Structured Outputs in [`src/app/api/analyze/route.ts`](src/app/api/analyze/route.ts).
