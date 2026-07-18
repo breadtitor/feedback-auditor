@@ -3,6 +3,7 @@
 
 # next
 /.next
+/.next-*
 /out
 
 # test output

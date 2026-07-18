@@ -427,6 +427,15 @@ function Workspace({
   async function runLiveAnalysis() {
     setLiveState("running");
     setLiveMessage("Extracting evidence with GPT-5.6…");
+
+    if (process.env.NEXT_PUBLIC_STATIC_EXPORT === "true") {
+      setLiveState("error");
+      setLiveMessage(
+        "Live Analysis requires a server deployment with an OpenAI API key. The complete synthetic demo remains fully interactive.",
+      );
+      return;
+    }
+
     try {
       const response = await fetch("/api/analyze", {
         method: "POST",
@@ -462,9 +471,9 @@ function Workspace({
     } catch (error) {
       setLiveState("error");
       setLiveMessage(
-        error instanceof Error
+        error instanceof Error && error.message.includes("OPENAI_API_KEY")
           ? `${error.message} The synthetic demo remains fully interactive.`
-          : "Live Analysis is unavailable. The synthetic demo remains fully interactive.",
+          : "Live Analysis is unavailable. The local draft is unchanged and the synthetic demo remains fully interactive.",
       );
     }
   }
