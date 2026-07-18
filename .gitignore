@@ -1,5 +1,8 @@
 # dependencies
 /node_modules
+/.venv-kokoro
+__pycache__/
+*.py[cod]
 
 # next
 /.next

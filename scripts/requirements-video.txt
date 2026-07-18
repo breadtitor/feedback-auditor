@@ -1,0 +1,5 @@
+# Reproducible local narration pipeline (Python 3.12 used for the final render).
+kokoro==0.9.4
+misaki[en]==0.9.4
+espeakng-loader==0.2.4
+soundfile==0.14.0

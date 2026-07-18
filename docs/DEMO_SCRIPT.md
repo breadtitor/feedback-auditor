@@ -2,7 +2,18 @@
 
 Target length: **2:35–2:50**. Hard limit: under three minutes. Format: 16:9, 1080p, English voiceover, readable cursor, no background music required.
 
-The final voiceover should be reviewed and spoken by the entrant in their own natural wording.
+The final voiceover uses the open-weight [Kokoro-82M](https://huggingface.co/hexgrad/Kokoro-82M) `af_heart` voice (Apache-2.0). The entrant reviewed the wording and explicitly requested an open-source synthetic voice.
+
+Final render: `artifacts/demo/feedback-auditor-demo-kokoro-highlighted.mp4` (**2:44**, 1080p, English narration). It has synchronized chapter labels and UI focus boxes, but intentionally has no burned-in captions or subtitle stream because YouTube captions will be used.
+
+Rebuild the narration and video from the repository root:
+
+```powershell
+py -3.12 -m venv .venv-kokoro
+& '.\.venv-kokoro\Scripts\python.exe' -m pip install -r scripts\requirements-video.txt
+& '.\.venv-kokoro\Scripts\python.exe' scripts\generate_kokoro_demo_audio.py
+& '.\.venv-kokoro\Scripts\python.exe' scripts\compose_highlighted_demo.py
+```
 
 ## Shot list and narration draft
 
