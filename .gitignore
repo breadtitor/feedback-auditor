@@ -1,0 +1,23 @@
+# dependencies
+/node_modules
+
+# next
+/.next
+/out
+
+# test output
+/coverage
+/test-results
+/playwright-report
+
+# local configuration
+.env*
+!.env.example
+
+# local editor and OS files
+.DS_Store
+Thumbs.db
+*.log
+
+# TypeScript
+*.tsbuildinfo
