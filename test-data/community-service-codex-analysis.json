@@ -1,0 +1,568 @@
+{
+  "schemaVersion": "1.0",
+  "promptVersion": "1.0",
+  "analyses": [
+    {
+      "submissionId": "submission-a",
+      "signals": [
+        {
+          "id": "signal-submission-a-claim-1",
+          "submissionId": "submission-a",
+          "rubricDimensionId": "claim",
+          "kind": "strength",
+          "canonicalTag": "claim_clear",
+          "severity": "minor",
+          "excerpt": "High schools should require every student to complete twenty hours of community service before graduation because service teaches responsibility beyond the classroom.",
+          "explanation": "The opening states an explicit position and gives the central responsibility-based reason for it.",
+          "confidence": 0.96
+        },
+        {
+          "id": "signal-submission-a-evidence-1",
+          "submissionId": "submission-a",
+          "rubricDimensionId": "evidence",
+          "kind": "issue",
+          "canonicalTag": "claim_unsupported",
+          "severity": "moderate",
+          "excerpt": "This proves that a service requirement makes teenagers responsible citizens.",
+          "explanation": "The sentence generalizes from one library program without explaining how those activities demonstrate lasting responsibility.",
+          "confidence": 0.95
+        },
+        {
+          "id": "signal-submission-a-organization-1",
+          "submissionId": "submission-a",
+          "rubricDimensionId": "organization",
+          "kind": "strength",
+          "canonicalTag": "organization_coherent",
+          "severity": "minor",
+          "excerpt": "Some students already have jobs, sports, or family duties, so the requirement should allow evening, weekend, and summer options. Schools could also approve service completed through clubs or neighborhood organizations.",
+          "explanation": "The response moves coherently from an access concern to two related implementation options.",
+          "confidence": 0.9
+        },
+        {
+          "id": "signal-submission-a-clarity-1",
+          "submissionId": "submission-a",
+          "rubricDimensionId": "clarity",
+          "kind": "strength",
+          "canonicalTag": "language_clear",
+          "severity": "minor",
+          "excerpt": "With flexible scheduling, every student could participate without losing important work or family time.",
+          "explanation": "The sentence communicates the proposed accommodation and its purpose directly and readably.",
+          "confidence": 0.92
+        }
+      ],
+      "feedbackCoverage": [
+        {
+          "submissionId": "submission-a",
+          "rubricDimensionId": "claim",
+          "addressedTags": ["claim_clear"],
+          "stance": "positive",
+          "hasActionableNextStep": false
+        },
+        {
+          "submissionId": "submission-a",
+          "rubricDimensionId": "evidence",
+          "addressedTags": ["claim_unsupported"],
+          "stance": "mixed",
+          "hasActionableNextStep": true
+        },
+        {
+          "submissionId": "submission-a",
+          "rubricDimensionId": "organization",
+          "addressedTags": [],
+          "stance": "neutral",
+          "hasActionableNextStep": false
+        },
+        {
+          "submissionId": "submission-a",
+          "rubricDimensionId": "clarity",
+          "addressedTags": [],
+          "stance": "neutral",
+          "hasActionableNextStep": false
+        }
+      ]
+    },
+    {
+      "submissionId": "submission-b",
+      "signals": [
+        {
+          "id": "signal-submission-b-claim-1",
+          "submissionId": "submission-b",
+          "rubricDimensionId": "claim",
+          "kind": "strength",
+          "canonicalTag": "claim_clear",
+          "severity": "minor",
+          "excerpt": "Community service should be required for graduation.",
+          "explanation": "The opening gives an unambiguous position on the proposed graduation requirement.",
+          "confidence": 0.97
+        },
+        {
+          "id": "signal-submission-b-claim-2",
+          "submissionId": "submission-b",
+          "rubricDimensionId": "claim",
+          "kind": "strength",
+          "canonicalTag": "implementation_practical",
+          "severity": "minor",
+          "excerpt": "Students could choose a cause that interests them and complete the hours at any time during the school year.",
+          "explanation": "The response adds concrete choice and scheduling details to make the proposal more practical.",
+          "confidence": 0.91
+        },
+        {
+          "id": "signal-submission-b-evidence-1",
+          "submissionId": "submission-b",
+          "rubricDimensionId": "evidence",
+          "kind": "issue",
+          "canonicalTag": "claim_unsupported",
+          "severity": "major",
+          "excerpt": "The food bank example proves that required service makes students more responsible citizens.",
+          "explanation": "The conclusion is asserted without explaining how sorting donations demonstrates broader or lasting responsibility.",
+          "confidence": 0.97
+        },
+        {
+          "id": "signal-submission-b-organization-1",
+          "submissionId": "submission-b",
+          "rubricDimensionId": "organization",
+          "kind": "issue",
+          "canonicalTag": "transition_abrupt",
+          "severity": "moderate",
+          "excerpt": "The food bank example proves that required service makes students more responsible citizens. Schools already require classes, physical education, and other activities, so one service project is not unreasonable.",
+          "explanation": "The response shifts from the food-bank inference to an analogy about school requirements without a transition that connects the two reasons.",
+          "confidence": 0.91
+        },
+        {
+          "id": "signal-submission-b-clarity-1",
+          "submissionId": "submission-b",
+          "rubricDimensionId": "clarity",
+          "kind": "strength",
+          "canonicalTag": "language_clear",
+          "severity": "minor",
+          "excerpt": "A simple requirement would help local organizations and encourage teenagers to contribute to their communities.",
+          "explanation": "The sentence expresses two intended outcomes in straightforward, readable language.",
+          "confidence": 0.86
+        }
+      ],
+      "feedbackCoverage": [
+        {
+          "submissionId": "submission-b",
+          "rubricDimensionId": "claim",
+          "addressedTags": ["claim_clear", "implementation_practical"],
+          "stance": "positive",
+          "hasActionableNextStep": false
+        },
+        {
+          "submissionId": "submission-b",
+          "rubricDimensionId": "evidence",
+          "addressedTags": [],
+          "stance": "neutral",
+          "hasActionableNextStep": false
+        },
+        {
+          "submissionId": "submission-b",
+          "rubricDimensionId": "organization",
+          "addressedTags": ["transition_abrupt"],
+          "stance": "mixed",
+          "hasActionableNextStep": true
+        },
+        {
+          "submissionId": "submission-b",
+          "rubricDimensionId": "clarity",
+          "addressedTags": [],
+          "stance": "neutral",
+          "hasActionableNextStep": false
+        }
+      ]
+    },
+    {
+      "submissionId": "submission-c",
+      "signals": [
+        {
+          "id": "signal-submission-c-claim-1",
+          "submissionId": "submission-c",
+          "rubricDimensionId": "claim",
+          "kind": "strength",
+          "canonicalTag": "claim_clear",
+          "severity": "minor",
+          "excerpt": "High schools should encourage community service, but they should not make it a graduation requirement.",
+          "explanation": "The opening clearly distinguishes support for service from opposition to a mandatory graduation rule.",
+          "confidence": 0.98
+        },
+        {
+          "id": "signal-submission-c-claim-2",
+          "submissionId": "submission-c",
+          "rubricDimensionId": "claim",
+          "kind": "issue",
+          "canonicalTag": "counterargument_underdeveloped",
+          "severity": "moderate",
+          "excerpt": "Supporters of a requirement argue that mandatory service would expose every student to community needs. That exposure could be useful. However, schools should instead advertise volunteer opportunities and offer elective credit for sustained participation.",
+          "explanation": "The response concedes the stated benefit and proposes an alternative, but it does not explain why that benefit is insufficient to justify a requirement.",
+          "confidence": 0.95
+        },
+        {
+          "id": "signal-submission-c-evidence-1",
+          "submissionId": "submission-c",
+          "rubricDimensionId": "evidence",
+          "kind": "strength",
+          "canonicalTag": "evidence_integrated",
+          "severity": "minor",
+          "excerpt": "At my school, members of the robotics club voluntarily ran a weekend workshop for younger students. They planned lessons, repaired equipment, and returned for several Saturdays because they wanted the program to succeed.",
+          "explanation": "The example supplies concrete actions and sustained voluntary participation that support the preference for chosen service.",
+          "confidence": 0.94
+        },
+        {
+          "id": "signal-submission-c-organization-1",
+          "submissionId": "submission-c",
+          "rubricDimensionId": "organization",
+          "kind": "strength",
+          "canonicalTag": "organization_coherent",
+          "severity": "minor",
+          "excerpt": "A voluntary program would still help community groups while allowing students to choose work that matches their interests and schedules. Encouragement and recognition can build commitment without turning service into another box students must check before graduation.",
+          "explanation": "The closing sentences synthesize the community benefit, student choice, and final recommendation in a coherent sequence.",
+          "confidence": 0.91
+        },
+        {
+          "id": "signal-submission-c-clarity-1",
+          "submissionId": "submission-c",
+          "rubricDimensionId": "clarity",
+          "kind": "strength",
+          "canonicalTag": "language_precise",
+          "severity": "minor",
+          "excerpt": "Encouragement and recognition can build commitment without turning service into another box students must check before graduation.",
+          "explanation": "The contrast between commitment and compliance is expressed concisely and with a clear relationship to the claim.",
+          "confidence": 0.92
+        }
+      ],
+      "feedbackCoverage": [
+        {
+          "submissionId": "submission-c",
+          "rubricDimensionId": "claim",
+          "addressedTags": ["claim_clear", "counterargument_underdeveloped"],
+          "stance": "mixed",
+          "hasActionableNextStep": true
+        },
+        {
+          "submissionId": "submission-c",
+          "rubricDimensionId": "evidence",
+          "addressedTags": ["evidence_integrated"],
+          "stance": "positive",
+          "hasActionableNextStep": false
+        },
+        {
+          "submissionId": "submission-c",
+          "rubricDimensionId": "organization",
+          "addressedTags": [],
+          "stance": "neutral",
+          "hasActionableNextStep": false
+        },
+        {
+          "submissionId": "submission-c",
+          "rubricDimensionId": "clarity",
+          "addressedTags": [],
+          "stance": "neutral",
+          "hasActionableNextStep": false
+        }
+      ]
+    },
+    {
+      "submissionId": "submission-d",
+      "signals": [
+        {
+          "id": "signal-submission-d-claim-1",
+          "submissionId": "submission-d",
+          "rubricDimensionId": "claim",
+          "kind": "strength",
+          "canonicalTag": "claim_practical_constraints",
+          "severity": "minor",
+          "excerpt": "Schools should not require twenty hours of community service because students have very different responsibilities outside school.",
+          "explanation": "The opening states a clear position and grounds it in a relevant practical constraint.",
+          "confidence": 0.98
+        },
+        {
+          "id": "signal-submission-d-claim-2",
+          "submissionId": "submission-d",
+          "rubricDimensionId": "claim",
+          "kind": "issue",
+          "canonicalTag": "counterargument_underdeveloped",
+          "severity": "moderate",
+          "excerpt": "People who support the requirement say that service teaches responsibility and introduces teenagers to local problems. Students with jobs and family duties already practice responsibility every week.",
+          "explanation": "The response acknowledges the opposing view but only briefly explains why existing family or work responsibilities answer the separate benefit of exposure to community problems.",
+          "confidence": 0.91
+        },
+        {
+          "id": "signal-submission-d-evidence-1",
+          "submissionId": "submission-d",
+          "rubricDimensionId": "evidence",
+          "kind": "issue",
+          "canonicalTag": "evidence_specificity_limited",
+          "severity": "moderate",
+          "excerpt": "Some students work evening shifts, care for younger siblings, or travel a long distance each day.",
+          "explanation": "The examples are relevant, but they remain generalized and are not supported by a specific case, statistic, or source.",
+          "confidence": 0.96
+        },
+        {
+          "id": "signal-submission-d-organization-1",
+          "submissionId": "submission-d",
+          "rubricDimensionId": "organization",
+          "kind": "strength",
+          "canonicalTag": "logical_progression",
+          "severity": "minor",
+          "excerpt": "Schools could provide a list of optional projects and recognize students who participate, but graduation should depend on academic work rather than unpaid hours.",
+          "explanation": "The response moves coherently from its objection to an alternative proposal and restates the governing distinction.",
+          "confidence": 0.92
+        },
+        {
+          "id": "signal-submission-d-clarity-1",
+          "submissionId": "submission-d",
+          "rubricDimensionId": "clarity",
+          "kind": "strength",
+          "canonicalTag": "language_clear_and_controlled",
+          "severity": "minor",
+          "excerpt": "Volunteering can be valuable, yet it should remain a choice so that students can balance school with the obligations they already have.",
+          "explanation": "The contrast is expressed in a controlled sentence with a clear relationship between the position and its reason.",
+          "confidence": 0.96
+        }
+      ],
+      "feedbackCoverage": [
+        {
+          "submissionId": "submission-d",
+          "rubricDimensionId": "claim",
+          "addressedTags": ["claim_practical_constraints"],
+          "stance": "positive",
+          "hasActionableNextStep": false
+        },
+        {
+          "submissionId": "submission-d",
+          "rubricDimensionId": "evidence",
+          "addressedTags": ["evidence_specificity_limited"],
+          "stance": "mixed",
+          "hasActionableNextStep": true
+        },
+        {
+          "submissionId": "submission-d",
+          "rubricDimensionId": "organization",
+          "addressedTags": [],
+          "stance": "neutral",
+          "hasActionableNextStep": false
+        },
+        {
+          "submissionId": "submission-d",
+          "rubricDimensionId": "clarity",
+          "addressedTags": ["language_clear_and_controlled"],
+          "stance": "positive",
+          "hasActionableNextStep": false
+        }
+      ]
+    },
+    {
+      "submissionId": "submission-e",
+      "signals": [
+        {
+          "id": "signal-submission-e-claim-1",
+          "submissionId": "submission-e",
+          "rubricDimensionId": "claim",
+          "kind": "strength",
+          "canonicalTag": "counterargument_addressed",
+          "severity": "minor",
+          "excerpt": "Some students may have limited transportation, and schools could arrange buses or approve projects completed from home.",
+          "explanation": "The response recognizes an access concern and proposes two relevant accommodations.",
+          "confidence": 0.95
+        },
+        {
+          "id": "signal-submission-e-evidence-1",
+          "submissionId": "submission-e",
+          "rubricDimensionId": "evidence",
+          "kind": "strength",
+          "canonicalTag": "example_relevant",
+          "severity": "minor",
+          "excerpt": "Last spring, volunteers at a neighborhood garden planted vegetables that were later donated to a shelter.",
+          "explanation": "The garden example is concrete and relevant to the claimed community benefit.",
+          "confidence": 0.95
+        },
+        {
+          "id": "signal-submission-e-evidence-2",
+          "submissionId": "submission-e",
+          "rubricDimensionId": "evidence",
+          "kind": "issue",
+          "canonicalTag": "evidence_claim_link_weak",
+          "severity": "moderate",
+          "excerpt": "The garden shows that students can help other people. A requirement would also teach responsibility.",
+          "explanation": "The response moves from a useful volunteer example to a broader responsibility claim without explaining how the example establishes that conclusion.",
+          "confidence": 0.94
+        },
+        {
+          "id": "signal-submission-e-organization-1",
+          "submissionId": "submission-e",
+          "rubricDimensionId": "organization",
+          "kind": "issue",
+          "canonicalTag": "sequence_hard_to_follow",
+          "severity": "major",
+          "excerpt": "Therefore, every school should immediately require twenty hours. Last spring, volunteers at a neighborhood garden planted vegetables that were later donated to a shelter.",
+          "explanation": "A conclusive recommendation appears before the supporting example, weakening the progression from evidence to conclusion.",
+          "confidence": 0.99
+        },
+        {
+          "id": "signal-submission-e-organization-2",
+          "submissionId": "submission-e",
+          "rubricDimensionId": "organization",
+          "kind": "issue",
+          "canonicalTag": "implementation_sequence_reversed",
+          "severity": "major",
+          "excerpt": "The program should begin with a final reflection essay, followed by an orientation session, and then students could select a project.",
+          "explanation": "The proposed implementation places the final reflection before orientation and project selection, producing an internally reversed sequence.",
+          "confidence": 0.99
+        },
+        {
+          "id": "signal-submission-e-clarity-1",
+          "submissionId": "submission-e",
+          "rubricDimensionId": "clarity",
+          "kind": "strength",
+          "canonicalTag": "language_clear_and_controlled",
+          "severity": "minor",
+          "excerpt": "Schools could allow summer participation for students with busy schedules.",
+          "explanation": "The accommodation is communicated directly and without ambiguous wording.",
+          "confidence": 0.95
+        }
+      ],
+      "feedbackCoverage": [
+        {
+          "submissionId": "submission-e",
+          "rubricDimensionId": "claim",
+          "addressedTags": ["counterargument_addressed"],
+          "stance": "positive",
+          "hasActionableNextStep": false
+        },
+        {
+          "submissionId": "submission-e",
+          "rubricDimensionId": "evidence",
+          "addressedTags": ["example_relevant"],
+          "stance": "positive",
+          "hasActionableNextStep": false
+        },
+        {
+          "submissionId": "submission-e",
+          "rubricDimensionId": "organization",
+          "addressedTags": ["sequence_hard_to_follow", "implementation_sequence_reversed"],
+          "stance": "corrective",
+          "hasActionableNextStep": true
+        },
+        {
+          "submissionId": "submission-e",
+          "rubricDimensionId": "clarity",
+          "addressedTags": [],
+          "stance": "neutral",
+          "hasActionableNextStep": false
+        }
+      ]
+    },
+    {
+      "submissionId": "submission-f",
+      "signals": [
+        {
+          "id": "signal-submission-f-claim-1",
+          "submissionId": "submission-f",
+          "rubricDimensionId": "claim",
+          "kind": "strength",
+          "canonicalTag": "claim_clear_and_reasoned",
+          "severity": "minor",
+          "excerpt": "Schools should reward sustained community service with elective credit instead of requiring the same number of hours from every student. An incentive preserves student choice while giving meaningful service academic recognition.",
+          "explanation": "The response states a specific alternative and immediately supplies a rationale based on choice and recognition.",
+          "confidence": 0.99
+        },
+        {
+          "id": "signal-submission-f-claim-2",
+          "submissionId": "submission-f",
+          "rubricDimensionId": "claim",
+          "kind": "strength",
+          "canonicalTag": "counterargument_addressed",
+          "severity": "minor",
+          "excerpt": "A requirement might reach more students at first, but it could also encourage them to select the quickest available task.",
+          "explanation": "The response acknowledges a benefit of the opposing position and answers it with a relevant limitation.",
+          "confidence": 0.97
+        },
+        {
+          "id": "signal-submission-f-claim-3",
+          "submissionId": "submission-f",
+          "rubricDimensionId": "claim",
+          "kind": "issue",
+          "canonicalTag": "implementation_detail_needed",
+          "severity": "minor",
+          "excerpt": "Elective credit would let schools set clear expectations for reflection, reliability, and long-term participation.",
+          "explanation": "The proposal names expectations but does not explain the practical mechanism for recording or administering the elective credit.",
+          "confidence": 0.9
+        },
+        {
+          "id": "signal-submission-f-evidence-1",
+          "submissionId": "submission-f",
+          "rubricDimensionId": "evidence",
+          "kind": "strength",
+          "canonicalTag": "evidence_integrated",
+          "severity": "minor",
+          "excerpt": "In one district program, students who volunteered weekly with elementary reading partners were more likely to continue after the semester ended than students assigned to a single service day. The comparison suggests that continuity and choice matter more than simply completing a minimum number of hours.",
+          "explanation": "The response explicitly interprets the comparison and connects it to the distinction between sustained and minimum-hour service.",
+          "confidence": 0.99
+        },
+        {
+          "id": "signal-submission-f-evidence-2",
+          "submissionId": "submission-f",
+          "rubricDimensionId": "evidence",
+          "kind": "issue",
+          "canonicalTag": "source_citation_missing",
+          "severity": "moderate",
+          "excerpt": "In one district program, students who volunteered weekly with elementary reading partners were more likely to continue after the semester ended than students assigned to a single service day.",
+          "explanation": "The comparative factual claim is specific enough to support the argument but does not identify its source.",
+          "confidence": 0.98
+        },
+        {
+          "id": "signal-submission-f-organization-1",
+          "submissionId": "submission-f",
+          "rubricDimensionId": "organization",
+          "kind": "strength",
+          "canonicalTag": "evidence_to_claim_cohesion",
+          "severity": "minor",
+          "excerpt": "The comparison suggests that continuity and choice matter more than simply completing a minimum number of hours. A requirement might reach more students at first, but it could also encourage them to select the quickest available task.",
+          "explanation": "The response moves coherently from interpreting its evidence to considering a limitation of the opposing approach.",
+          "confidence": 0.96
+        },
+        {
+          "id": "signal-submission-f-clarity-1",
+          "submissionId": "submission-f",
+          "rubricDimensionId": "clarity",
+          "kind": "strength",
+          "canonicalTag": "language_precise",
+          "severity": "minor",
+          "excerpt": "An incentive preserves student choice while giving meaningful service academic recognition.",
+          "explanation": "The sentence expresses the distinction between choice and recognition concisely and precisely.",
+          "confidence": 0.98
+        }
+      ],
+      "feedbackCoverage": [
+        {
+          "submissionId": "submission-f",
+          "rubricDimensionId": "claim",
+          "addressedTags": ["claim_clear_and_reasoned", "implementation_detail_needed"],
+          "stance": "mixed",
+          "hasActionableNextStep": true
+        },
+        {
+          "submissionId": "submission-f",
+          "rubricDimensionId": "evidence",
+          "addressedTags": ["evidence_integrated", "source_citation_missing"],
+          "stance": "mixed",
+          "hasActionableNextStep": true
+        },
+        {
+          "submissionId": "submission-f",
+          "rubricDimensionId": "organization",
+          "addressedTags": ["evidence_to_claim_cohesion"],
+          "stance": "positive",
+          "hasActionableNextStep": false
+        },
+        {
+          "submissionId": "submission-f",
+          "rubricDimensionId": "clarity",
+          "addressedTags": [],
+          "stance": "neutral",
+          "hasActionableNextStep": false
+        }
+      ]
+    }
+  ]
+}

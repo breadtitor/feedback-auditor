@@ -1,10 +1,19 @@
 # Judge Test Guide
 
-Time required: about three minutes. No login, student data, or API key is required.
+Time required: about three minutes per path. No login, real student data, or API key is required.
 
 Public demo: <https://breadtitor.github.io/feedback-auditor/>
 
-## 1. Open the product (20 seconds)
+## Choose a judge path
+
+The landing page provides two intentionally separate static demonstrations:
+
+1. **Try the synthetic demo** is the seven-finding, 88%-coverage fixture shown in the narrated video.
+2. **Open the precomputed Codex audit** is the newer six-essay GPT-5.6 Codex sample run: 32 verified evidence signals, 13 review questions, 63% coverage, and no API call from the site.
+
+Neither path sends a request to OpenAI. The precomputed path is recommended when testing the latest analysis result; the original path is retained so the numbers and workflow in the 2:44 voiceover video remain reproducible. Its confidence label was clarified after recording to identify the evidence as pre-authored rather than live extraction.
+
+## 1. Open the narrated-video fixture (20 seconds)
 
 Select **Try the synthetic demo** on the landing page. You should see:
 
@@ -27,6 +36,20 @@ Verify that the detail panel shows:
 - a neutral teacher review question.
 
 The product does not say which grade is correct.
+
+## Optional: inspect the precomputed Codex audit (60 seconds)
+
+Return home and select **Open the precomputed Codex audit**. Verify:
+
+- the top bar reads **Precomputed · no API** and contains no Live Analysis action;
+- the provenance banner explains that 32 saved evidence signals are matched locally to six fictional submissions;
+- the metrics show 13 open review questions, 63% feedback coverage, and 0 automated changes;
+- the review queue contains R1, R2, R3, and R4 findings;
+- the six complete essays are available under **Submissions**;
+- **Methodology** labels step 2 as saved GPT-5.6 Codex analysis;
+- exported Markdown records the precomputed provenance and zero public-site API calls.
+
+The JSON was generated earlier in the entrant's GPT-5.6 Codex session and validated by the same production evidence gate used by the server route. The browser is not claiming that these results were generated live.
 
 ## 3. Record a teacher decision (35 seconds)
 
@@ -64,3 +87,4 @@ The new audit is ready for GPT-5.6 evidence extraction. Without a configured ser
 - No protected-characteristic inference.
 - No real student data in the repository.
 - No browser-exposed API key.
+- No live OpenAI Platform request from either public judge path.

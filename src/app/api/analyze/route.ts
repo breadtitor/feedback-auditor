@@ -3,12 +3,8 @@ import { zodTextFormat } from "openai/helpers/zod";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
-import {
-  analysisResponseSchema,
-  auditProjectSchema,
-  evidenceSignalSchema,
-  feedbackCoverageSchema,
-} from "@/domain/schemas";
+import { ingestAnalysisResponse } from "@/domain/analysis-ingest";
+import { analysisResponseSchema, auditProjectSchema } from "@/domain/schemas";
 import {
   ANALYSIS_PROMPT_VERSION,
   ANALYSIS_SCHEMA_VERSION,
@@ -74,35 +70,9 @@ export async function POST(request: Request) {
     }
 
     const parsed = analysisResponseSchema.parse(response.output_parsed);
-    const submissions = new Map(
-      input.project.submissions.map((submission) => [submission.id, submission]),
-    );
-    const rubricIds = new Set(input.project.rubric.map((dimension) => dimension.id));
-
-    const signals = parsed.analyses.flatMap((analysis) =>
-      analysis.signals.flatMap((signal) => {
-        const submission = submissions.get(signal.submissionId);
-        if (
-          !submission ||
-          !rubricIds.has(signal.rubricDimensionId) ||
-          !submission.text.includes(signal.excerpt)
-        ) {
-          return [];
-        }
-        return [evidenceSignalSchema.parse({ ...signal, source: "model" })];
-      }),
-    );
-
-    const feedbackCoverage = parsed.analyses.flatMap((analysis) =>
-      analysis.feedbackCoverage.flatMap((coverage) => {
-        if (
-          !submissions.has(coverage.submissionId) ||
-          !rubricIds.has(coverage.rubricDimensionId)
-        ) {
-          return [];
-        }
-        return [feedbackCoverageSchema.parse(coverage)];
-      }),
+    const { signals, feedbackCoverage, evidenceValidation } = ingestAnalysisResponse(
+      input.project,
+      parsed,
     );
 
     return NextResponse.json({
@@ -111,12 +81,7 @@ export async function POST(request: Request) {
       model: response.model,
       signals,
       feedbackCoverage,
-      evidenceValidation: {
-        accepted: signals.length,
-        rejected:
-          parsed.analyses.reduce((total, analysis) => total + analysis.signals.length, 0) -
-          signals.length,
-      },
+      evidenceValidation,
     });
   } catch (error) {
     console.error("Live Analysis failed", {

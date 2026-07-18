@@ -41,6 +41,7 @@ These sentences will be used to assemble the final English Devpost description w
 - Demo length: 2:44
 - Demo format: 1920×1080, 16:9, English Kokoro-82M open-weight voiceover, synchronized UI highlights, no embedded subtitles
 - Synthetic fixture: 6 submissions, 4 rubric dimensions, 7 findings, 4 deterministic rules
+- Precomputed Codex judge path: 6 full fictional essays, 32 verified evidence signals, 13 findings, 63% coverage, 0 public-site API calls
 - Live integration: GPT-5.6 Responses API + Structured Outputs + verbatim excerpt validation
 - Public judge path: no account and no API key required for the deterministic synthetic demo
 - Public hosting boundary: static GitHub Pages deployment with no database, server API, or embedded key

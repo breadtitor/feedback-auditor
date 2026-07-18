@@ -19,7 +19,7 @@ The teacher remains the decision-maker. Every finding is a review question with 
 
 ## Judge quick start
 
-No account or API key is required for the complete synthetic demo. The fastest path is the [public judge deployment](https://breadtitor.github.io/feedback-auditor/).
+No account or API key is required for either public judge path. The fastest path is the [public judge deployment](https://breadtitor.github.io/feedback-auditor/).
 
 ```bash
 npm install
@@ -28,16 +28,20 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000), then:
 
-1. Select **Try the synthetic demo**.
+1. Select **Try the synthetic demo** for the narrated-video fixture, or **Open the precomputed Codex audit** for the full six-essay analysis.
 2. Open any finding to compare highlighted evidence, rubric scores, and existing feedback.
 3. Add a note and choose **Confirm for review**, **Mark resolved**, or **Dismiss signal**.
 4. Filter by status or rubric dimension.
 5. Open **Submissions** and **Methodology**.
 6. Select **Export review** for a teacher-readable Markdown decision log.
 
-The demo contains six synthetic Grade 10 submissions and seven expected findings across four rule types.
+The narrated-video fixture contains six synthetic Grade 10 submissions and seven expected findings across four rule types. It remains versioned at 88% feedback coverage so the published 2:44 video stays reproducible.
+
+The separate **precomputed Codex audit** contains six full fictional essays, 32 source-verified evidence signals, 24 feedback-coverage records, and 13 deterministic review questions at 63% coverage. Its structured analysis was generated in the entrant's GPT-5.6 Codex session, then passed through the production evidence gate. Opening it on GitHub Pages performs **zero OpenAI Platform API calls** and requires no visitor key.
 
 The public GitHub Pages deployment is intentionally static: it has no database, server API, or embedded OpenAI key. Live Analysis remains available in the repository's server deployment, while the public judge site exposes the complete deterministic workflow without a billable or abusable endpoint.
+
+> The public judge demo uses versioned, precomputed synthetic data and makes no live OpenAI API request. Live GPT-5.6 extraction is implemented for self-hosted server mode.
 
 ## Create a custom audit
 
@@ -56,6 +60,10 @@ For a real Live Analysis smoke test, use the six fully fictional records in
 The matching assignment prompt and deliberately planted R1–R4 review patterns are documented in
 [`test-data/community-service-audit-test-guide.md`](test-data/community-service-audit-test-guide.md).
 Exact model tags may vary, so use the built-in synthetic demo for the fixed seven-finding regression check.
+The versioned result displayed by **Open the precomputed Codex audit** is stored in
+[`test-data/community-service-codex-analysis.json`](test-data/community-service-codex-analysis.json),
+with a human-readable audit summary in
+[`test-data/community-service-codex-audit-report.md`](test-data/community-service-codex-audit-report.md).
 
 ## GPT-5.6 integration
 
@@ -122,6 +130,14 @@ Current synthetic evaluation contract:
 - 88% rubric feedback coverage in the fixture;
 - no automatic grade changes.
 
+Additional no-key Codex regression:
+
+- 32 of 32 saved evidence signals accepted by the production evidence gate;
+- 24 unique feedback-coverage records;
+- 13 review questions across R1–R4;
+- 63% rubric feedback coverage;
+- no API call in the public browser and no score changes.
+
 See [`docs/EVALUATION.md`](docs/EVALUATION.md) for the rubric-aligned test matrix and [`docs/JUDGE_TEST_GUIDE.md`](docs/JUDGE_TEST_GUIDE.md) for a three-minute product test.
 
 ## How Codex was used
@@ -157,7 +173,7 @@ src/
   app/                    Next.js UI and server route
   components/             landing, setup, audit workspace
   domain/                 schemas and deterministic rules
-  fixtures/               synthetic public demo dataset
+  fixtures/               versioned synthetic and precomputed public demos
   lib/openai/             versioned GPT-5.6 analysis prompt
 tests/
   rules/                  reproducible synthetic evaluation

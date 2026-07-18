@@ -10,10 +10,12 @@ import {
   type AuditFinding,
   type FindingStatus,
 } from "@/domain/schemas";
+import { communityServicePrecomputedProject } from "@/fixtures/community-service-precomputed-project";
 import { demoProject } from "@/fixtures/demo-project";
 
 type View = "queue" | "submissions" | "method";
 type LiveState = "idle" | "running" | "success" | "error";
+type WorkspaceMode = "fixture" | "precomputed" | "custom";
 
 const STORAGE_KEY = "feedback-auditor-decisions-v1";
 
@@ -73,7 +75,15 @@ function ProductMark({ compact = false }: { compact?: boolean }) {
   );
 }
 
-function Landing({ onStart, onCreate }: { onStart: () => void; onCreate: () => void }) {
+function Landing({
+  onStart,
+  onPrecomputed,
+  onCreate,
+}: {
+  onStart: () => void;
+  onPrecomputed: () => void;
+  onCreate: () => void;
+}) {
   return (
     <main className="landing-shell">
       <nav className="landing-nav" aria-label="Primary navigation">
@@ -166,6 +176,28 @@ function Landing({ onStart, onCreate }: { onStart: () => void; onCreate: () => v
         <div><strong>0</strong><span>automatic grade changes</span></div>
       </section>
 
+      <section className="precomputed-showcase" aria-labelledby="precomputed-title">
+        <div className="precomputed-copy">
+          <span className="precomputed-label"><Icon name="spark" size={16} /> GPT-5.6 Codex sample run</span>
+          <h2 id="precomputed-title">Inspect the completed analysis—without supplying an API key.</h2>
+          <p>
+            Six full fictional essays were analyzed in Codex, passed through the same
+            verbatim-evidence gate used by the server route, and saved for deterministic
+            R1–R4 review on this static site.
+          </p>
+          <button className="precomputed-cta" onClick={onPrecomputed} data-testid="try-precomputed">
+            Open the precomputed Codex audit
+            <Icon name="arrow" size={17} />
+          </button>
+        </div>
+        <div className="precomputed-stats" aria-label="Precomputed audit results">
+          <div><strong>32</strong><span>verified excerpts</span></div>
+          <div><strong>13</strong><span>review questions</span></div>
+          <div><strong>0</strong><span>API calls on this site</span></div>
+          <small>Completely fictional data · scores never changed</small>
+        </div>
+      </section>
+
       <section className="method-section" id="how">
         <div className="section-heading">
           <div className="eyebrow"><span /> How it works</div>
@@ -236,11 +268,13 @@ function HighlightedText({ text, excerpt }: { text: string; excerpt: string }) {
 function FindingDetail({
   project,
   finding,
+  mode,
   onClose,
   onUpdate,
 }: {
   project: AuditProject;
   finding: AuditFinding;
+  mode: WorkspaceMode;
   onClose: () => void;
   onUpdate: (status: FindingStatus, note?: string) => void;
 }) {
@@ -298,7 +332,13 @@ function FindingDetail({
                     <div className="signal-explanation">
                       <span>{signal.canonicalTag.replaceAll("_", " ")}</span>
                       <p>{signal.explanation}</p>
-                      <small>{Math.round(signal.confidence * 100)}% extraction confidence</small>
+                      <small>
+                        {mode === "precomputed"
+                          ? `GPT-5.6 Codex precomputed · ${Math.round(signal.confidence * 100)}% confidence`
+                          : mode === "fixture"
+                            ? `Pre-authored fixture · ${Math.round(signal.confidence * 100)}% confidence label`
+                            : `${Math.round(signal.confidence * 100)}% extraction confidence`}
+                      </small>
                     </div>
                   )}
                   <div className="teacher-feedback">
@@ -357,10 +397,12 @@ function FindingDetail({
 
 function Workspace({
   initialProject,
+  mode,
   onExit,
   onEdit,
 }: {
   initialProject: AuditProject;
+  mode: WorkspaceMode;
   onExit: () => void;
   onEdit: (project: AuditProject) => void;
 }) {
@@ -399,6 +441,7 @@ function Workspace({
   );
   const openCount = findings.filter((item) => item.status === "open").length;
   const reviewedCount = findings.length - openCount;
+  const isPrecomputed = mode === "precomputed";
 
   function persist(next: AuditFinding[]) {
     const decisions = Object.fromEntries(
@@ -485,6 +528,12 @@ function Workspace({
       `Dataset: ${project.datasetLabel}`,
       `Assignment: ${project.title}`,
       `Generated: ${new Date().toISOString()}`,
+      ...(isPrecomputed
+        ? [
+            "Provenance: GPT-5.6 Codex precomputed analysis, validated against fictional source text.",
+            "OpenAI Platform API calls from the public site: none.",
+          ]
+        : []),
       "",
       "> Review signals support teacher calibration. They are not grades or fairness determinations.",
       "",
@@ -520,7 +569,13 @@ function Workspace({
     <main className="app-shell">
       <aside className="app-sidebar">
         <button className="brand-button" onClick={onExit} aria-label="Return to product home"><ProductMark /></button>
-        <div className="dataset-badge"><span /><div><strong>{project.synthetic ? "Synthetic dataset" : "Local teacher draft"}</strong><small>{project.synthetic ? "Safe for public demo" : "Anonymous records"}</small></div></div>
+        <div className={`dataset-badge ${isPrecomputed ? "precomputed" : ""}`}>
+          <span />
+          <div>
+            <strong>{isPrecomputed ? "Precomputed Codex analysis" : project.synthetic ? "Synthetic dataset" : "Local teacher draft"}</strong>
+            <small>{isPrecomputed ? "No OpenAI Platform API call" : project.synthetic ? "Safe for public demo" : "Anonymous records"}</small>
+          </div>
+        </div>
 
         <nav className="app-nav" aria-label="Audit navigation">
           <button className={view === "queue" ? "active" : ""} onClick={() => setView("queue")}>
@@ -555,15 +610,29 @@ function Workspace({
           <div className="breadcrumb"><span>Audits</span><Icon name="chevron" size={14} /><strong>{project.title}</strong></div>
           <div className="topbar-actions">
             {!project.synthetic && <button className="secondary-button" onClick={() => onEdit(project)}>Edit inputs</button>}
-            <button className="secondary-button" onClick={runLiveAnalysis} disabled={liveState === "running"}>
-              <Icon name="spark" size={16} />
-              {liveState === "running" ? "Analyzing…" : "Run live analysis"}
-            </button>
+            {isPrecomputed ? (
+              <span className="precomputed-mode-pill" data-testid="precomputed-mode"><Icon name="lock" size={15} /> Precomputed · no API</span>
+            ) : (
+              <button className="secondary-button" onClick={runLiveAnalysis} disabled={liveState === "running"}>
+                <Icon name="spark" size={16} />
+                {liveState === "running" ? "Analyzing…" : "Run live analysis"}
+              </button>
+            )}
             <button className="export-button" onClick={exportReport} data-testid="export-report">
               <Icon name="download" size={16} /> Export review
             </button>
           </div>
         </header>
+
+        {isPrecomputed && (
+          <div className="precomputed-banner" data-testid="precomputed-provenance">
+            <Icon name="shield" size={18} />
+            <div>
+              <strong>Saved Codex evidence, deterministic audit</strong>
+              <span>32 evidence signals are loaded locally, matched to six fictional submissions, and evaluated by versioned R1–R4 rules. This is not a live API response.</span>
+            </div>
+          </div>
+        )}
 
         {liveState !== "idle" && (
           <div className={`live-status ${liveState}`} role="status">
@@ -579,9 +648,9 @@ function Workspace({
               <div>
                 <span className="page-kicker">Calibration review</span>
                 <h1>Review signals</h1>
-                <p>Patterns worth a second look, ordered by review priority.</p>
+                <p>{isPrecomputed ? "13 deterministic review questions from 32 verified Codex evidence signals." : "Patterns worth a second look, ordered by review priority."}</p>
               </div>
-              <button className="reset-button" onClick={resetReview}><Icon name="refresh" size={15} /> Reset demo</button>
+              <button className="reset-button" onClick={resetReview}><Icon name="refresh" size={15} /> {isPrecomputed ? "Reset audit" : "Reset demo"}</button>
             </div>
 
             <div className="metric-grid">
@@ -619,7 +688,7 @@ function Workspace({
 
         {view === "submissions" && (
           <div className="workspace-content">
-            <div className="workspace-heading"><div><span className="page-kicker">{project.synthetic ? "Synthetic calibration pack" : "Local calibration draft"}</span><h1>Anonymous submissions</h1><p>{project.synthetic ? "Every record is synthetic and purpose-built for this public demo." : "These records remain local until Live Analysis is explicitly started."}</p></div></div>
+            <div className="workspace-heading"><div><span className="page-kicker">{isPrecomputed ? "Codex-precomputed fictional pack" : project.synthetic ? "Synthetic calibration pack" : "Local calibration draft"}</span><h1>Anonymous submissions</h1><p>{isPrecomputed ? "Every essay is fictional; saved analysis is loaded locally and makes no API call." : project.synthetic ? "Every record is synthetic and purpose-built for this public demo." : "These records remain local until Live Analysis is explicitly started."}</p></div></div>
             <div className="submission-grid">
               {project.submissions.map((submission) => (
                 <article key={submission.id}>
@@ -635,10 +704,10 @@ function Workspace({
 
         {view === "method" && (
           <div className="workspace-content methodology-page">
-            <div className="workspace-heading"><div><span className="page-kicker">Transparent by design</span><h1>Audit methodology</h1><p>The model structures evidence; versioned code determines review signals.</p></div></div>
+            <div className="workspace-heading"><div><span className="page-kicker">Transparent by design</span><h1>Audit methodology</h1><p>{isPrecomputed ? "Codex structured the saved evidence; versioned code determines the review questions." : "The model structures evidence; versioned code determines review signals."}</p></div></div>
             <div className="pipeline-card">
               <div><span>01</span><Icon name="file" /><strong>Anonymous work + rubric</strong><small>Teacher-provided evidence</small></div><Icon name="arrow" />
-              <div><span>02</span><Icon name="spark" /><strong>Structured signals</strong><small>GPT-5.6 extraction</small></div><Icon name="arrow" />
+              <div><span>02</span><Icon name="spark" /><strong>Structured signals</strong><small>{isPrecomputed ? "Saved GPT-5.6 Codex analysis" : "GPT-5.6 extraction"}</small></div><Icon name="arrow" />
               <div><span>03</span><Icon name="layers" /><strong>Deterministic rules</strong><small>TypeScript v1.0</small></div><Icon name="arrow" />
               <div><span>04</span><Icon name="users" /><strong>Teacher decision</strong><small>Human-controlled outcome</small></div>
             </div>
@@ -653,7 +722,7 @@ function Workspace({
         )}
       </section>
 
-      {selected && view === "queue" && <FindingDetail key={selected.id} project={project} finding={selected} onClose={() => setSelectedId(null)} onUpdate={updateFinding} />}
+      {selected && view === "queue" && <FindingDetail key={selected.id} project={project} finding={selected} mode={mode} onClose={() => setSelectedId(null)} onUpdate={updateFinding} />}
     </main>
   );
 }
@@ -662,6 +731,7 @@ export function AuditWorkspace() {
   const [screen, setScreen] = useState<"landing" | "setup" | "workspace">("landing");
   const [project, setProject] = useState<AuditProject | null>(null);
   const [editingProject, setEditingProject] = useState<AuditProject | null>(null);
+  const [workspaceMode, setWorkspaceMode] = useState<WorkspaceMode>("fixture");
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -669,7 +739,15 @@ export function AuditWorkspace() {
 
   const openDemo = () => {
     window.scrollTo(0, 0);
+    setWorkspaceMode("fixture");
     setProject(demoProject);
+    setScreen("workspace");
+  };
+
+  const openPrecomputed = () => {
+    window.scrollTo(0, 0);
+    setWorkspaceMode("precomputed");
+    setProject(communityServicePrecomputedProject);
     setScreen("workspace");
   };
 
@@ -685,6 +763,7 @@ export function AuditWorkspace() {
         initialProject={editingProject}
         onCancel={() => setScreen(project ? "workspace" : "landing")}
         onSave={(savedProject) => {
+          setWorkspaceMode("custom");
           setProject(savedProject);
           setEditingProject(null);
           setScreen("workspace");
@@ -697,6 +776,7 @@ export function AuditWorkspace() {
     return (
       <Workspace
         initialProject={project}
+        mode={workspaceMode}
         onEdit={(currentProject) => openSetup(currentProject)}
         onExit={() => {
           setProject(null);
@@ -707,5 +787,5 @@ export function AuditWorkspace() {
     );
   }
 
-  return <Landing onStart={openDemo} onCreate={() => openSetup()} />;
+  return <Landing onStart={openDemo} onPrecomputed={openPrecomputed} onCreate={() => openSetup()} />;
 }
